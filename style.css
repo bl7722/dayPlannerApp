@@ -4,7 +4,7 @@ body {
   line-height: 1;
 }
 
-textarea{
+textArea{
   background: transparent;
   border: 1px solid black;
   resize: none;
@@ -54,12 +54,13 @@ textarea{
 .present {
   background-color: #ff6961;
   color: white;
-  
+  border: 1px solid black;
 }
 
 .future {
   background-color: #77dd77;
   color: white;
+  border: 1px solid black;
 }
 
 .saveBtn {
@@ -68,6 +69,8 @@ textarea{
   border-bottom-right-radius: 15px;
   background-color: #06AED5;
   color: white;
+  border: 1px solid black;
+  text-align: center;
 }
 
 .saveBtn i:hover {

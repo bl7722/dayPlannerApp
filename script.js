@@ -28,6 +28,16 @@ for( let i = 9; i < 25; i++){
     newInput.attr("id", "userInput"+i);
     newInput.text(localStorage.getItem("schedule" + i));
   
+  var newBtn = $("<button>");
+    newBtn.addClass("col-md-2 btn btn-primary btn-block saveBtn")
+    newBtn.text("SAVE");
+  
+  var currentTime = moment().format("HH");
+  var inputArea = document.querySelector(".hour" + i)
+  var current = moment().format('MMMM Do YYYY, h:mm:ss a'); 
+  
+  $("#currentDay").html(current);
+  
   
  
 }
