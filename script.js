@@ -1,8 +1,8 @@
 var userInput = [];
 var schedule = $(".time-block")
 var display = localStorage.getItem("schedule")
-var sub = moment().format("a")
 var time = moment().format("h")
+var pmAm = moment().format("a")
 
 for( let i = 9; i < 25; i++){
     var newTimeRow = $("<div>");
@@ -11,16 +11,16 @@ for( let i = 9; i < 25; i++){
     var newTime = $("<div>");
       newTime.addClass("col-md-2 offset-md-1 hour" + (i))
       if(i < 12){
-        sub = "AM"
-        newTime.text(parseInt(i)+ " " + sub)
+        pmAm = "AM"
+        newTime.text(parseInt(i)+ " " + pmAm)
       }
       else if(i >= 13){
-        sub= "PM"
-        newTime.text(parseInt(i - 12)+ " " + sub)
+        pmAm= "PM"
+        newTime.text(parseInt(i - 12)+ " " + pmAm)
       }
       else{
-        sub= "PM"
-            newTime.text(parseInt(i)+ " " + sub)
+        pmAm= "PM"
+            newTime.text(parseInt(i)+ " " + pmAm)
       }
   
   var newInput = $("<textArea>");
@@ -38,6 +38,38 @@ for( let i = 9; i < 25; i++){
   
   $("#currentDay").html(current);
   
+  function updateDay(){
+
+    current = moment().format('MMMM Do YYYY, h:mm:ss a'); 
+    $("#currentDay").html(current);
+    
+  }
+
+      if( i === parseInt(currentTime)){
+        (newInput).addClass("present")
+      }
+
+      else if( i > parseInt(currentTime)){
+        (newInput).addClass("future")
+      }
+
+      else if ( i < parseInt(currentTime)){
+        (newInput).addClass("past")
+      };
+  
+      newTimeRow.append(newTime);
+      newTimeRow.append(newInput);
+      newTimeRow.append(newBtn);
+      schedule.append(newTimeRow);
+  
+  setInterval(updateDay,1000);
+  
+    newTimeRow.on("click","button",function(event){
+        event.preventDefault();
+        var userInput = ($(this)).prev().val();
+        localStorage.setItem("schedule" + i, userInput);
+      
+    });
   
  
 }
