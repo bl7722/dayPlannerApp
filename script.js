@@ -4,7 +4,7 @@ var display = localStorage.getItem("schedule")
 var time = moment().format("h")
 var pmAm = moment().format("a")
 
-for( let i = 9; i < 25; i++){
+for( let i = 9; i < 18; i++){
     var newTimeRow = $("<div>");
       newTimeRow.addClass("input-group form")
     
